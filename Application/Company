@@ -1,0 +1,66 @@
+CREATE TABLE IF NOT EXISTS companies(
+    id INTEGER PRIMARY KEY, 
+    name TEXT, 
+    location TEXT,
+    numEmployees INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS employees(
+    id INTEGER PRIMARY KEY, 
+    name TEXT, 
+    email TEXT,
+    company_id INTEGER REFERENCES companies(id)
+);
+-- DO NOT EDIT CODE ABOVE
+
+-- YOUR CODE HERE
+INSERT INTO companies (name, location, numEmployees)
+VALUES
+    ('Acme Inc', 'Nowhere', 5),
+    ('The Better Company', 'Washington DC', 50)
+;
+
+SELECT * FROM companies;
+
+UPDATE companies
+SET 
+    location = "New York",
+    numEmployees = 15
+WHERE id = 1;
+
+SELECT * FROM companies;
+
+DELETE FROM companies WHERE id = 1;
+
+SELECT * FROM companies;
+
+INSERT INTO companies (name, location, numEmployees)
+VALUES
+    ('Acme Inc', 'New York', 15),
+    ('The Better Company', 'Washington DC', 50),
+    ('Bowls-R-Us', 'Copper Hills', 60),
+    ('Speed Cyclery', 'Washington DC', 147),
+    ('Sparkles-A-Million', 'New York', 25)
+;
+
+SELECT name, numEmployees
+FROM companies
+WHERE numEmployees > 40;
+
+INSERT INTO employees (name, email, company_id)
+VALUES
+    ('Annie Position', 'annie@email.com', 2),
+    ('Bea O-Problem', 'bea@email.com', 1),
+    ('Bud Lightyear', 'dabuzz@email.com', 4),
+    ('Airis Windy', 'weather@email.com', 2),
+    ('Barbie Breath', 'barb@email.com', 2),
+    ('Reese WitherFork', 'reesey@email.com', 1)
+;
+
+SELECT companies.name, employees.name, employees.email
+FROM companies
+JOIN employees
+ON companies.id = employees.company_id;
+
+-- DO NOT EDIT CODE BELOW
+-- SELECT * FROM companies;
