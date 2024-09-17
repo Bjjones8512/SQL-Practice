@@ -58,3 +58,20 @@ SELECT restaurants.name, menus.title, menuItems.name
 FROM restaurants
 JOIN menus ON restaurants.id = menus.restaurant_id
 JOIN menuItems ON menus.id = menuItems.menu_id;
+
+SELECT restaurants.name AS restaurant_name, menus.title AS menu_title, menuItems.name AS menu_item_name
+FROM restaurants
+LEFT JOIN menus ON restaurants.id = menus.restaurant_id
+LEFT JOIN menuItems ON menus.id = menuItems.menu_id;
+
+SELECT menus.title, menuItems.name, menuItems.price
+FROM menus
+JOIN menuItems
+ON menus.id = menuItems.menu_id
+WHERE menus.id = 1;
+
+SELECT menus.title, menuItems.name, menuItems.price
+FROM menus
+JOIN menuItems
+ON menus.id = menuItems.menu_id
+WHERE menuItems.price < 30;
