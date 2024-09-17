@@ -53,3 +53,8 @@ SELECT name, title
 FROM restaurants
 INNER JOIN menus
 ON restaurants.id = menus.restaurant_id;
+
+SELECT restaurants.name, menus.title, menuItems.name
+FROM restaurants
+JOIN menus ON restaurants.id = menus.restaurant_id
+JOIN menuItems ON menus.id = menuItems.menu_id;
